@@ -4,10 +4,18 @@
       button.book-popup__preview(
         v-for="(img, index) in book.images")
         img.book-popup__preview-image(
+          v-img:group="{ src: full(img), thumbnails: true }"
           :src="img"
           :alt="book.title + '-' + index")
     .book-popup__cover
-      img.book-popup__image(:src="book.cover")
+      img.book-popup__image(
+        v-if="book.cover"
+        :src="book.cover")
+      Placeholder(
+        v-else
+        :title="book.title"
+        :authors="authors"
+        :info="book.main")
     .book-popup__card
       .book-popup__main
         .book-popup__top
@@ -73,7 +81,8 @@ export default class BookPopup extends Vue {
   }
 
   get annotation(): string[] | null {
-    if (this.book.annotation !== null) {
+    // console.log(this.book.annotation)
+    if (this.book.annotation !== undefined) {
       return this.book.annotation.split('\n')
     } else {
       return null
@@ -87,6 +96,11 @@ export default class BookPopup extends Vue {
 
   toggleInfo() {
     this.showInfo = !this.showInfo
+  }
+
+  full(path: string) {
+    const pos = path.indexOf('/books')
+    return path.substr(0, pos + 7) + 'full_' + path.substr(pos + 7)
   }
 }
 </script>
@@ -133,14 +147,13 @@ export default class BookPopup extends Vue {
 .book-popup
   display: flex
   font-family: 'PT Sans'
-  > div
-    margin-right: 10px
-    &:last-child
-      margin-right: 0
+  position: relative
 
 
   &__cover
+    position: relative
     width: 320px
+    margin-right: 10px
     border: none
     outline: none
     background: white
@@ -149,9 +162,11 @@ export default class BookPopup extends Vue {
 
 
   &__image
-    background-size: cover
-    background: center no-repeat
+    display: flex
+    height: 100%
     border-radius: inherit
+    object-fit: cover
+    width: 100%
 
 
   &__images
@@ -162,15 +177,19 @@ export default class BookPopup extends Vue {
       &:last-child
         margin-bottom: 0
 
+
   &__preview
     border-radius: 6px
     overflow: hidden
+    position: absolute
+    left: -74px
+    top: 0
 
 
   &__preview-image
     object-fit: cover
-    width: 48px
-    height: 72px
+    width: 64px
+    height: 96px
     border-radius: 6px
     cursor: pointer
     transition: all ease-in-out 0.15s
@@ -245,6 +264,7 @@ export default class BookPopup extends Vue {
     text-indent: 20px
     padding: 12px
     background-color: hsla(221, 100, 64, 0.05)
+    margin-bottom: 10px
 
 
   &__controls
@@ -279,6 +299,9 @@ export default class BookPopup extends Vue {
 
 
   &__control-buttons
+    position: absolute
+    right: -42px
+    top: 0
     > .btn
       margin-bottom: 10px
 

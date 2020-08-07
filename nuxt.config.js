@@ -26,33 +26,17 @@ export default {
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
-  /*
-   ** Global CSS
-   */
   css: [
     '~/assets/fonts/PTSans/stylesheet.css',
     '~/assets/fonts/PTMono/stylesheet.css',
   ],
-  /*
-   ** Plugins to load before mounting the App
-   ** https://nuxtjs.org/guide/plugins
-   */
   plugins: [
     { src: '~/plugins/v-waypoint.client.js', mode: 'client' },
     { src: '~/plugins/nuxt-swiper-plugin.js', mode: 'client' },
+    { src: '~/plugins/v-img.js' },
   ],
-  /*
-   ** Auto import components
-   ** See https://nuxtjs.org/api/configuration-components
-   */
   components: true,
-  /*
-   ** Nuxt.js dev-modules
-   */
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
-  /*
-   ** Nuxt.js modules
-   */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
@@ -62,7 +46,9 @@ export default {
    ** Axios module configuration
    ** See https://axios.nuxtjs.org/options
    */
-  axios: {},
+  axios: {
+    baseURL: 'https://expose-server.gpntbsib.ru/api',
+  },
   /*
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/

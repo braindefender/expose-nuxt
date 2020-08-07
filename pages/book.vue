@@ -1,10 +1,11 @@
 <template lang="pug">
 .page
   Escape(
+    v-if="escape"
     :link="escape.link"
     :title="escape.title"
     :image="escape.image")
-  BookPopup(:book="testbook" :popup="true")
+  BookPopup(:book="book" :popup="true")
 </template>
 
 <script lang="ts">
@@ -17,23 +18,27 @@ import BookPopup from '~/components/Book/BookPopup.vue'
 
 @Component({
   components: { BookPopup },
-})
-export default class BookPage extends Vue {
+
   async asyncData(ctx: Context) {
     const path = ctx.route.path.split('/')
     const pathExpose = path[path.length - 3]
     const pathBook = path[path.length - 1]
 
-    const link = encodeURI(`/expose/${pathExpose}/book2/${pathBook}`)
-
+    // const link = encodeURI(`/expose/${pathExpose}/book2/${pathBook}`)
+    const title = 'vnp-f458f16c'
+    const link = encodeURI(`/expose/${title}/book2/Г2020-1575*114695920`)
+    console.log(link)
     const book = await ctx.app.$axios.$get(link, { params: {} })
     console.log('Book', book)
-    const escape = await ctx.app.$axios.$get('escape', {
-      params: { _id: book.id, title: pathExpose },
+    const escape = await ctx.app.$axios.$get('info/escape', {
+      params: { _id: book.id, title },
     })
-    console.log('Escape', escape)
-    return { book, escape }
-  }
+    console.log('Escape', escape.expose)
+    return { book, escape: escape.expose }
+  },
+})
+export default class BookPage extends Vue {
+  escape: object | null = null
 
   testbook: Book = {
     title: 'Виктория Кальватоне: судьба одного шедевра.',
@@ -75,6 +80,7 @@ export default class BookPage extends Vue {
 
 .page
   display: flex
+  flex-direction: column
   align-items: center
   justify-content: center
   background-color: #f1f2f4
