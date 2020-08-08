@@ -8,7 +8,7 @@ nav.contents
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 
 import ContentsItem from './ContentsItem.vue'
 import { ExposeSectionType } from '~/types/types'

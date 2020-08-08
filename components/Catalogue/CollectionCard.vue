@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'nuxt-property-decorator'
 import { prettyDate } from '~/assets/util/date'
 import { CollectionCardType } from '~/types/types'
 

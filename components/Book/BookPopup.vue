@@ -55,7 +55,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'nuxt-property-decorator'
 
 import InfoLine from '~/components/Book/InfoLine.vue'
 import InfoTag from '~/components/Book/InfoTag.vue'

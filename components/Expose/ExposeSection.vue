@@ -21,7 +21,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'nuxt-property-decorator'
 
 import BookCard from './BookCard.vue'
 import { ExposeSectionType } from '~/types/types'
