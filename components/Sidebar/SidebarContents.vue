@@ -1,6 +1,6 @@
 <template lang="pug">
 nav.contents
-  ContentsItem(
+  SidebarContentsItem(
     v-for="(item, index) in sections" 
     :key="index" 
     :item="item"
@@ -10,11 +10,11 @@ nav.contents
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 
-import ContentsItem from './ContentsItem.vue'
+import SidebarContentsItem from './SidebarContentsItem.vue'
 import { ExposeSectionType } from '~/types/types'
 
 @Component({
-  components: { ContentsItem },
+  components: { SidebarContentsItem },
 })
 export default class Contents extends Vue {
   get sections(): ExposeSectionType {

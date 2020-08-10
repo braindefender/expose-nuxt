@@ -27,8 +27,9 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   css: [
-    '~/assets/fonts/PTSans/stylesheet.css',
-    '~/assets/fonts/PTMono/stylesheet.css',
+    { src: '~/assets/fonts/PTSans/stylesheet.css' },
+    { src: '~/assets/fonts/PTMono/stylesheet.css' },
+    { src: 'swiper/swiper.scss' },
   ],
   plugins: [
     { src: '~/plugins/v-waypoint.client.js', mode: 'client' },
@@ -40,6 +41,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    `@nuxtjs/proxy`,
     'vue-scrollto/nuxt',
   ],
   /*
@@ -48,6 +50,14 @@ export default {
    */
   axios: {
     baseURL: 'https://expose-server.gpntbsib.ru/api',
+  },
+  proxy: {
+    '/api': {
+      target: 'https://expose-server.gpntbsib.ru/api',
+      pathRewrite: {
+        '^/api': '/',
+      },
+    },
   },
   /*
    ** Build configuration

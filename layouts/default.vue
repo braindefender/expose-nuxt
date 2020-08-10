@@ -7,7 +7,7 @@ div
 
 <style lang="sass">
 html
-  font-family: 'Fira Sans', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
+  font-family: 'PT Sans', 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif
   font-size: 16px
   word-spacing: 1px
   -ms-text-size-adjust: 100%
@@ -63,6 +63,12 @@ button
   border: none
 
 
+.heading-h2
+  font-size: 20px
+  font-weight: bold
+  line-height: 26px
+
+
 \:root
   --color-bg-10: #171A1C
   --color-bg-15: #22262A
@@ -76,8 +82,7 @@ button
 
   --content-padding: 20px
 
-  --card-width: 540px
-  --card-height: 180px
+  --card-width: 410px
 
   --sidebar-padding: 20px
 </style>

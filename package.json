@@ -14,6 +14,7 @@
   "dependencies": {
     "@nuxt/typescript-runtime": "^0.4.10",
     "@nuxtjs/axios": "^5.11.0",
+    "fast-average-color": "^6.0.2",
     "nuxt": "^2.13.0",
     "nuxt-property-decorator": "^2.7.2",
     "nuxt-typed-vuex": "^0.1.19",
