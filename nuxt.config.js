@@ -55,7 +55,7 @@ export default {
     '/api': {
       target: 'https://expose-server.gpntbsib.ru/api',
       pathRewrite: {
-        '^/api': '/',
+        '^/api': '',
       },
     },
   },

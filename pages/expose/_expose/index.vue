@@ -26,14 +26,25 @@
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 
+import { Context } from '@nuxt/types'
 import { prettyDate } from '~/assets/util/date'
 
 import { Expose } from '~/types/types'
 
 import SidebarExpose from '@/components/Sidebar/SidebarExpose.vue'
+import ExposeSection from '@/components/Expose/ExposeSection.vue'
 
 @Component({
   components: { SidebarExpose },
+
+   async asyncData(ctx: Context) {
+     console.log(`/api/expose/${ctx.params.expose}`)
+
+     const ex: any = await ctx.app.$axios.$get(`/expose/${ctx.params.expose}`)
+     const info = ex.info
+     const stacks = ex.stacks
+     return { info, stacks }
+   },
 })
 export default class ExposePage extends Vue {
   small = false
@@ -48,7 +59,7 @@ export default class ExposePage extends Vue {
   }
 
   get background(): string {
-    return `background-image: url(${this.$store.state.expose.source.image});`
+    return `background-image: url(${this.expose.source.image});`
   }
 
   get headerStyle(): string {
@@ -60,8 +71,8 @@ export default class ExposePage extends Vue {
   }
 
   get date(): string {
-    const from = this.$store.state.expose.dates.from
-    const to = this.$store.state.expose.dates.to
+    const from = this.expose.dates.from
+    const to = this.expose.dates.to
     if (to !== undefined) {
       return prettyDate(from, to)
     } else {

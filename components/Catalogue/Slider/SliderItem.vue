@@ -60,5 +60,5 @@ export default class SliderItem extends Vue {
     line-height: 24px
     position: relative
     z-index: 10
-    white-space: pre
+    white-space: pre-wrap
 </style>

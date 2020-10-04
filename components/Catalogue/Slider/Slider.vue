@@ -75,6 +75,7 @@ export default class Slider extends Vue {
   width: 850px
   height: 272px
   position: relative
+  box-shadow: 0 0 24px rgba(black, 0.15), 0 16px 24px -16px rgba(black, 0.6)
 
 
   &__navigation

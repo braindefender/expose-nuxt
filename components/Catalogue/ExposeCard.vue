@@ -1,5 +1,5 @@
 <template lang="pug">
-a.card(:href="expose.link" :style="style")
+a.card(:href="link" :style="style")
   img.card__image(ref="img" :src="expose.image" @load="onLoad")
   .card__info
     h3.card__title {{ expose.title }}
@@ -21,10 +21,16 @@ export default class ExposeCard extends Vue {
   onLoad() {
     const fac = new FastAverageColor()
     fac.getColorAsync(this.$refs.img).then((color) => {
-      console.log(color)
       const foreground = color.isDark ? '#fff' : '#000'
       this.style = `background-color: ${color.rgba}; color: ${foreground};`
     })
+  }
+
+  get link() {
+    if (this.expose.source) {
+      console.log(this.expose.source)
+    }
+    return `/expose/${this.expose.shortLink}-${this.expose._id.slice(-8)}`
   }
 
   get date() {
@@ -43,6 +49,7 @@ export default class ExposeCard extends Vue {
   background: #414658
   border-radius: 10px
   cursor: pointer
+  text-decoration: none
   box-shadow: 0 0 24px rgba(black, 0.15), 0 16px 24px -16px rgba(black, 0.6)
 
   &:hover
@@ -66,13 +73,17 @@ export default class ExposeCard extends Vue {
   &__info
     display: flex
     align-items: center
+    justify-content: space-between
 
 
   &__title
     font-size: 16px
     line-height: 18px
     max-height: 36px
+    overflow: hidden
     color: white
+    letter-spacing: -0.2px
+    align-self: flex-start
 
 
   &__date
@@ -81,7 +92,7 @@ export default class ExposeCard extends Vue {
     align-items: center
     flex-shrink: 0
     height: 30px
-    padding: 0 12px
+    padding: 0 9px
     font-size: 14px
     line-height: 18px
     border-radius: 5px
