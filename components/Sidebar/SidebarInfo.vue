@@ -1,12 +1,13 @@
 <template lang="pug">
 .sidebar-info
-  a.sidebar-info__link(
-    v-for="(item, index) in info"
-    :key="index"
-    :href="item.link"
-    :class="item.icon"
-  ) {{ item.title }}
-  .sidebar-info__separator
+  .sidebar-info__container
+    a.sidebar-info__link(
+      v-for="(item, index) in info"
+      :key="index"
+      :href="item.link"
+      :class="item.icon"
+    ) {{ item.title }}
+  .sidebar-separator
 </template>
 
 <script lang="ts">
@@ -70,8 +71,4 @@ export default Vue.extend({
       &::before
         background-image: url('/icons/info-phone.svg')
 
-  &__separator
-    height: 1px
-    background-color: rgba(white, 0.1)
-    margin-bottom: -25px
 </style>

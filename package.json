@@ -15,11 +15,12 @@
     "@nuxt/typescript-runtime": "^0.4.10",
     "@nuxtjs/axios": "^5.11.0",
     "fast-average-color": "^6.0.2",
-    "nuxt": "^2.13.0",
+    "nuxt": "^2.14.5",
     "nuxt-property-decorator": "^2.7.2",
     "nuxt-typed-vuex": "^0.1.19",
     "swiper": "^6.1.1",
     "v-img": "^0.2.0",
+    "vue": "^2.6.12",
     "vue-awesome-swiper": "^4.1.1",
     "vue-scrollto": "^2.18.1",
     "vue-waypoint": "^3.4.1"

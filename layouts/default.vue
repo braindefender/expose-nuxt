@@ -73,7 +73,7 @@ button
   --color-bg-10: #171A1C
   --color-bg-15: #22262A
   --color-bg-light: #E5E5E5
-  --color-accent: #1818F2
+  --color-accent: #1861F2
   --color-accent-2: #4680FF
   --main-grid-columns: 3
   --main-grid-cell: 540px
