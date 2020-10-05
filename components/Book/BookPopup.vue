@@ -82,7 +82,7 @@ export default class BookPopup extends Vue {
 
   get annotation(): string[] | null {
     // console.log(this.book.annotation)
-    if (this.book.annotation !== undefined) {
+    if ((this.book.annotation !== undefined) && (this.book.annotation !== null)) {
       return this.book.annotation.split('\n')
     } else {
       return null
